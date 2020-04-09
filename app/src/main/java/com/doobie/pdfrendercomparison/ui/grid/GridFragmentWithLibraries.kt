@@ -12,6 +12,8 @@ import com.doobie.pdfrendercomparison.getPdfFile
 import com.shockwave.pdfium.PdfDocument
 import com.shockwave.pdfium.PdfiumCore
 
+
+//NOTE: Not hooked up. It turns out PdfiumCore doesnt really offer much
 class GridFragmentWithLibraries : Fragment() {
 
     private lateinit var binding: FragmentPdfGridBinding

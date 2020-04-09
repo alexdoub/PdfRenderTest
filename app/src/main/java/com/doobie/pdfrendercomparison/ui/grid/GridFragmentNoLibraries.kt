@@ -70,15 +70,17 @@ class GridFragmentNoLibraries : Fragment() {
         binding.buttonZoomin.setOnClickListener {
             zoomScale *= 2f
 
-            val addedXOffset = bitmap.width / (.5f * zoomScale * getViewToPageScale())
-            val addedYOffset = bitmap.height / (.5f * zoomScale * getViewToPageScale())
-            xOffset -= addedXOffset
-            yOffset -= addedYOffset
+            // Adjust offset so the user sees what was in the center of the screen
+            val removedXOffset = bitmap.width / (.5f * zoomScale * getViewToPageScale())
+            val removedYOffset = bitmap.height / (.5f * zoomScale * getViewToPageScale())
+            xOffset -= removedXOffset
+            yOffset -= removedYOffset
             loadPage()
         }
         binding.buttonZoomout.setOnClickListener {
             zoomScale /= 2f
 
+            // Adjust offset so the user sees what was in the center of the screen
             val addedXOffset = bitmap.width / (zoomScale * getViewToPageScale())
             val addedYOffset = bitmap.height / (zoomScale * getViewToPageScale())
             xOffset += addedXOffset
@@ -96,7 +98,6 @@ class GridFragmentNoLibraries : Fragment() {
 
     private fun loadPdf() {
         val file = getPdfFile(requireContext())
-
         val fileDescriptor = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
         pdfRender = PdfRenderer(fileDescriptor)
     }
