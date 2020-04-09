@@ -49,7 +49,7 @@ class ScrollListFragment : Fragment() {
 
                     println("@@ did scroll to page $page with TOTAL offset $positionOffset%")
                 }
-                .spacing(0)
+                .spacing(8)
                 .enableAnnotationRendering(true)
                 .load()
         }
@@ -93,6 +93,7 @@ class ScrollListFragment : Fragment() {
 
 
             //set page offset
+            //NOTE: CANT SCROLL TO EXACT PAGE. maybe this is a lost cause
             val offsetPerPage = 1.0 / binding.pdfView.pageCount.toDouble()                              //should be 0.010526316%
             val positionOffset = page * offsetPerPage                                                   //should be 0.05263158 for page 6
             binding.pdfView.positionOffset = positionOffset.toFloat()
