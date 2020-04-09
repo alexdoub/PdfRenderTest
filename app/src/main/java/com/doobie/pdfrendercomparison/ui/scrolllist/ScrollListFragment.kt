@@ -39,7 +39,7 @@ class ScrollListFragment : Fragment() {
 
             jumpTo(somePageNumber, xPercent, yPercent, zoomScale)
         }
-        binding.jumpButton.text = "Jump to page ${somePageNumber + 1}"
+        binding.jumpButton.text = "Jump to center of page ${somePageNumber + 1}"
 
         binding.pdfView.fromFile(getPdfFile(requireContext()))
             .pageSnap(true) // snap pages to screen boundaries
